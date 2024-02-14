@@ -1,15 +1,28 @@
 module.exports = {
-  env: { browser: true, es2020: true },
+  parser: '@typescript-eslint/parser',
   extends: [
-    'eslint:recommended',
     'plugin:react/recommended',
-    'plugin:react/jsx-runtime',
+    'plugin:@typescript-eslint/recommended',
     'plugin:react-hooks/recommended',
   ],
-  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
-  settings: { react: { version: '18.2' } },
-  plugins: ['react-refresh'],
+  parserOptions: {
+    ecmaVersion: 'latest',
+    ecmaFeatures: { jsx: true },
+    sourceType: 'module',
+  },
   rules: {
-    'react-refresh/only-export-components': 'warn',
+    'react/react-in-jsx-scope': 'off',  // Pridajte toto pravidlo
+    'react/prop-types': 'off',
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
+  },
+  settings: {
+    react: {
+      version: 'detect',
+    },
+  },
+  env: {
+    browser: true,
+    node: true,
+    es2021: true,
   },
 }
